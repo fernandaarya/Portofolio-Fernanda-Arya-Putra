@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fernanda Arya Putra - Software Engineer & Data Analyst Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            bg: '#0B0813',
+                            surface: '#140F26',
+                            card: '#1B1435',
+                            border: '#2C2250',
+                            accent: '#7C5CFC',
+                            accentHover: '#6845F5',
+                            glow: '#A085F5',
+                            textMuted: '#9CA3AF'
+                        }
+                    },
+                    boxShadow: {
+                        'glow-purple': '0 0 35px -5px rgba(124, 92, 252, 0.35)',
+                        'glow-lg': '0 0 50px -10px rgba(160, 133, 245, 0.4)',
+                        'card-shadow': '0 10px 30px -10px rgba(0, 0, 0, 0.5)'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0813;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2C2250;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7C5CFC;
+        }
+        /* Custom Background Grid Accent */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(124, 92, 252, 0.15) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+</head>
+<body class="bg-dark-bg text-gray-100 font-sans antialiased selection:bg-dark-accent selection:text-white relative overflow-x-hidden">
+
+    <!-- Ambient Background Lighting -->
+    <div class="fixed top-0 left-1/4 -translate-x-1/2 w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+    <div class="fixed bottom-10 right-10 w-[400px] h-[400px] bg-dark-accent/15 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+
+    <!-- NAVBAR -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-dark-bg/80 backdrop-blur-md border-b border-dark-border/60 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center space-x-3 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-dark-accent to-purple-400 flex items-center justify-center font-bold text-lg text-white shadow-glow-purple group-hover:scale-105 transition-transform duration-300">
+                        FA
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-white group-hover:text-dark-glow transition-colors">
+                        Fernanda<span class="text-dark-accent">.dev</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-sm font-medium text-gray-300 hover:text-white hover:text-dark-glow transition-colors">Tentang Saya</a>
+                    <a href="#resume" class="text-sm font-medium text-gray-300 hover:text-white hover:text-dark-glow transition-colors">Resume & CV</a>
+                    <a href="#projects" class="text-sm font-medium text-gray-300 hover:text-white hover:text-dark-glow transition-colors">Proyek & Pengalaman</a>
+                    <a href="#skills" class="text-sm font-medium text-gray-300 hover:text-white hover:text-dark-glow transition-colors">Keahlian</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-dark-accent hover:bg-dark-accentHover text-white text-sm font-semibold shadow-glow-purple hover:shadow-glow-lg transition-all duration-300 transform hover:-translate-y-0.5">
+                        <i class="fa-solid me-2"></i>Hubungi Saya
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-dark-surface border-b border-dark-border px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-base font-medium text-gray-300 hover:text-white">Tentang Saya</a>
+            <a href="#resume" class="block py-2 text-base font-medium text-gray-300 hover:text-white">Resume & CV</a>
+            <a href="#projects" class="block py-2 text-base font-medium text-gray-300 hover:text-white">Proyek & Pengalaman</a>
+            <a href="#skills" class="block py-2 text-base font-medium text-gray-300 hover:text-white">Keahlian</a>
+            <a href="#contact" class="block w-full text-center mt-2 px-5 py-3 rounded-xl bg-dark-accent text-white font-semibold">
+                Hubungi Saya
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-grid-pattern overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-dark-surface border border-dark-border shadow-sm">
+                        <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                        <span class="text-xs font-semibold tracking-wide text-gray-300 uppercase">Available for Work / Open for Roles</span>
+                    </div>
+
+                    <div class="space-y-4">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                            Halo, Saya <br class="hidden sm:inline" />
+                            <span class="bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-200 to-dark-accent">
+                                Fernanda Arya Putra
+                            </span>
+                        </h1>
+                        <p class="text-xl lg:text-2xl font-semibold text-dark-glow">
+                            Software Engineer & Data Analyst
+                        </p>
+                    </div>
+
+                    <!-- Target Dynamic Tagline -->
+                    <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Lulusan Sarjana Sistem Informasi dengan keahlian komprehensif dalam Rekayasa Perangkat Lunak dan Analisis Data. Berfokus pada pengembangan sistem modern berkinerja tinggi serta pemrosesan data strategis.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-dark-accent to-purple-600 text-white font-bold text-center shadow-glow-purple hover:shadow-glow-lg hover:scale-[1.02] transition-all duration-300">
+                            Lihat Portofolio Proyek <i class="fa-solid fa-arrow-right ms-2"></i>
+                        </a>
+                        <button onclick="openResumeModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-dark-surface hover:bg-dark-card text-gray-200 hover:text-white font-semibold border border-dark-border hover:border-dark-accent/60 transition-all duration-300 flex items-center justify-center">
+                            <i class="fa-solid fa-file-lines me-2.5 text-dark-glow"></i> Pratinjau Resume / CV
+                        </button>
+                    </div>
+
+                    <!-- Social Media Links -->
+                    <div class="pt-4 flex items-center justify-center lg:justify-start space-x-5 text-gray-400">
+                        <span class="text-xs uppercase font-semibold text-gray-500 tracking-wider">Connect:</span>
+                        <a href="https://www.linkedin.com/in/fernanda-arya-putra" target="_blank" rel="noopener" class="w-10 h-10 rounded-lg bg-dark-surface border border-dark-border flex items-center justify-center hover:text-white hover:border-dark-accent hover:bg-dark-accent/20 transition-all" aria-label="LinkedIn Profile">
+                            <i class="fa-brands fa-linkedin-in text-lg"></i>
+                        </a>
+                        <a href="https://github.com/fernandaarya" target="_blank" rel="noopener" class="w-10 h-10 rounded-lg bg-dark-surface border border-dark-border flex items-center justify-center hover:text-white hover:border-dark-accent hover:bg-dark-accent/20 transition-all" aria-label="GitHub Profile">
+                            <i class="fa-brands fa-github text-lg"></i>
+                        </a>
+                        <a href="mailto:aryananda542@gmail.com" class="w-10 h-10 rounded-lg bg-dark-surface border border-dark-border flex items-center justify-center hover:text-white hover:border-dark-accent hover:bg-dark-accent/20 transition-all" aria-label="Send Email">
+                            <i class="fa-regular fa-envelope text-lg"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Profile Image Section -->
+                <div class="lg:col-span-5 flex justify-center lg:justify-end">
+                    <div class="relative group max-w-sm sm:max-w-md w-full">
+                        <!-- Outer Glow Ring -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-dark-accent via-purple-500 to-indigo-600 rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                        
+                        <!-- Card Frame -->
+                        <div class="relative bg-dark-surface border border-dark-border p-4 rounded-3xl shadow-2xl backdrop-blur-xl">
+                            <!-- Image Container -->
+                            <div class="relative overflow-hidden rounded-2xl aspect-[3/4] bg-dark-card">
+                                <img src="fernanda.png" 
+                                     alt="Fernanda Arya Putra - Professional Headshot" 
+                                     class="w-full h-full object-cover object-top transform group-hover:scale-105 transition-transform duration-700">
+                                
+                                <div class="absolute inset-0 bg-gradient-to-t from-dark-bg/90 via-transparent to-transparent opacity-80"></div>
+                                
+                                <!-- Floating Overlay Info -->
+                                <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-dark-surface/80 backdrop-blur-md border border-white/10">
+                                    <p class="text-sm font-bold text-white">Fernanda Arya Putra, S.Kom.</p>
+                                    <p class="text-xs text-dark-glow">S1 Sistem Informasi (IPK: 3.61)</p>
+                                </div>
+                            </div>
+
+                            <!-- Decorative Floating Badge -->
+                            <div class="absolute -bottom-5 -right-5 bg-dark-surface border border-dark-border p-3.5 rounded-2xl shadow-xl flex items-center space-x-3 hidden sm:flex">
+                                <div class="w-10 h-10 rounded-xl bg-dark-accent/20 border border-dark-accent/40 flex items-center justify-center text-dark-glow font-bold">
+                                    <i class="fa-solid fa-trophy text-lg"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold text-white">Juara 1</p>
+                                    <p class="text-[10px] text-gray-400">Kompetisi Desain UI/UX</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="py-20 bg-dark-surface/50 border-y border-dark-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-dark-accent">Tentang Profil</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">
+                    Kombinasi Rekayasa Perangkat Lunak & Analisis Data
+                </p>
+                <div class="w-16 h-1 bg-dark-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <!-- Bio & Highlights -->
+                <div class="lg:col-span-8 space-y-6">
+                    <p class="text-gray-300 leading-relaxed text-base sm:text-lg">
+                        Lulusan Sarjana Sistem Informasi dari <span class="text-white font-semibold">Universitas Respati Yogyakarta (IPK: 3.61/4.00)</span> dengan keahlian komprehensif dalam <span class="text-dark-glow font-semibold">Rekayasa Perangkat Lunak (Software Engineering)</span> dan <span class="text-dark-glow font-semibold">Analisis Data</span>. 
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-base">
+                        Memiliki kemampuan teknis mendalam dalam perancangan dan pengembangan aplikasi web menggunakan PHP, JavaScript, dan React, dipadukan dengan manipulasi serta pengolahan dataset menggunakan SQL dan Python. Memiliki pengalaman memimpin digitalisasi alur evaluasi instansi pemerintah dan kompetensi desain antarmuka berbasis <i class="text-gray-300">user-centered design (UCD)</i>.
+                    </p>
+                    
+                    <!-- Stats Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-dark-card border border-dark-border">
+                            <span class="block text-2xl font-extrabold text-white">3.61 / 4.00</span>
+                            <span class="text-xs text-gray-400 font-medium">IPK S1 Sistem Informasi</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-dark-card border border-dark-border">
+                            <span class="block text-2xl font-extrabold text-dark-glow">10,000+</span>
+                            <span class="text-xs text-gray-400 font-medium">Data NLP Extracted</span>
+                        </div>
+                        <div class="p-4 rounded-xl bg-dark-card border border-dark-border col-span-2 sm:col-span-1">
+                            <span class="block text-2xl font-extrabold text-emerald-400">Juara 1</span>
+                            <span class="text-xs text-gray-400 font-medium">Desain Web UI/UX 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Card -->
+                <div class="lg:col-span-4">
+                    <div class="p-6 rounded-2xl bg-dark-card border border-dark-border shadow-lg relative overflow-hidden group">
+                        <div class="absolute top-0 right-0 p-6 opacity-10 text-dark-accent group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-graduation-cap text-7xl"></i>
+                        </div>
+                        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full bg-dark-accent/20 text-dark-glow mb-4">Pendidikan Formal</span>
+                        <h3 class="text-xl font-bold text-white">Universitas Respati Yogyakarta</h3>
+                        <p class="text-sm font-medium text-gray-400 mt-1">S1 Sistem Informasi | 2022 - 2026</p>
+                        <hr class="my-4 border-dark-border">
+                        <ul class="space-y-2 text-xs text-gray-300">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 me-2"></i> Predikat Kelulusan Sangat Memuaskan</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 me-2"></i> Fokus: Software Engineering & Data Science</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-emerald-400 me-2"></i> Aktif Organisasi BEM Fakultas Sains & Teknologi</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUME & CV SECTION -->
+    <section id="resume" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-dark-accent">Curriculum Vitae</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">
+                    Pengalaman & Rekam Jejak
+                </p>
+                <p class="text-sm text-gray-400">Ringkasan riwayat proyek, analisis data, dan kepemimpinan organisasi.</p>
+                <div class="w-16 h-1 bg-dark-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Left Timeline: Pengalaman Proyek & Analisis Data -->
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-dark-accent/20 border border-dark-accent/40 flex items-center justify-center text-dark-glow">
+                            <i class="fa-solid fa-laptop-code text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Pengalaman Proyek & Data</h3>
+                    </div>
+
+                    <div class="relative border-s-2 border-dark-border ms-4 ps-6 space-y-10">
+                        <!-- Item 1 -->
+                        <div class="relative group">
+                            <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-dark-accent border-4 border-dark-bg group-hover:scale-125 transition-transform"></div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-dark-surface border border-dark-border text-dark-glow">2025</span>
+                            <h4 class="text-lg font-bold text-white mt-2">System Analyst & Lead Web Developer</h4>
+                            <p class="text-sm font-medium text-gray-400 mb-3">Sistem Informasi Penilaian Magang (Kemantren Tegalrejo)</p>
+                            <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
+                                <li>Mendigitalisasi alur evaluasi kinerja & rekapitulasi nilai mahasiswa magang instansi pemerintah.</li>
+                                <li>Merancang integrasi metode <i>multisource feedback</i> & kalkulasi rating bintang otomatis berbasis kuesioner skala Likert.</li>
+                                <li>Menyatukan arsitektur basis data relasional untuk keamanan dan efisiensi data peserta.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Item 2 -->
+                        <div class="relative group">
+                            <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-dark-accent border-4 border-dark-bg group-hover:scale-125 transition-transform"></div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-dark-surface border border-dark-border text-dark-glow">Juni - Okt 2024</span>
+                            <h4 class="text-lg font-bold text-white mt-2">Data Mining & NLP Specialist</h4>
+                            <p class="text-sm font-medium text-gray-400 mb-3">Twitter/X Data Crawling & NLP Preprocessing</p>
+                            <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
+                                <li>Mengekstrak 10,000+ baris data mentah tweet & metadata menggunakan skrip Python otomatis.</li>
+                                <li>Melakukan pembersihan data tidak terstruktur via NLTK (Case Folding, Tokenizing, Stemming) dengan peningkatan akurasi data siap pakai 90%+.</li>
+                                <li>Menstandarisasi pipeline prapemrosesan dataset untuk model Machine Learning.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Item 3 -->
+                        <div class="relative group">
+                            <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-dark-accent border-4 border-dark-bg group-hover:scale-125 transition-transform"></div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-dark-surface border border-dark-border text-emerald-400">2024 (Juara 1)</span>
+                            <h4 class="text-lg font-bold text-white mt-2">UI/UX Designer (Juara 1)</h4>
+                            <p class="text-sm font-medium text-gray-400 mb-3">Kompetisi Desain Website (HIMASI UNRIYO)</p>
+                            <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
+                                <li>Merancang solusi purwarupa interaktif berbasis metodologi <i>User-Centered Design (UCD)</i>.</li>
+                                <li>Membuat wireframe tingkat tinggi yang responsif dan estetis guna kenyamanan navigasi antarmuka.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Timeline: Organisasi & Kepemimpinan -->
+                <div class="space-y-8">
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-xl bg-dark-accent/20 border border-dark-accent/40 flex items-center justify-center text-dark-glow">
+                            <i class="fa-solid fa-users-gear text-lg"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Organisasi & Kepemimpinan</h3>
+                    </div>
+
+                    <div class="relative border-s-2 border-dark-border ms-4 ps-6 space-y-10">
+                        <!-- Org Item 1 -->
+                        <div class="relative group">
+                            <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-dark-bg group-hover:scale-125 transition-transform"></div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-dark-surface border border-dark-border text-dark-glow">2024 - 2025</span>
+                            <h4 class="text-lg font-bold text-white mt-2">Kepala Divisi Jurnalistik</h4>
+                            <p class="text-sm font-medium text-gray-400 mb-3">BEM Fakultas Sains & Teknologi UNRIYO</p>
+                            <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
+                                <li>Memimpin strategi publikasi digital serta pengelolaan saluran media organisasi secara menyeluruh.</li>
+                                <li>Mengawasi kontrol kualitas produksi konten kreatif, standar redaksional, dan dokumentasi visual.</li>
+                                <li>Mengoordinasikan peliputan aktivitas mahasiswa secara transparan dan profesional.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Org Item 2 -->
+                        <div class="relative group">
+                            <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-dark-bg group-hover:scale-125 transition-transform"></div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded bg-dark-surface border border-dark-border text-dark-glow">2023 - 2024</span>
+                            <h4 class="text-lg font-bold text-white mt-2">Staff Minat Bakat</h4>
+                            <p class="text-sm font-medium text-gray-400 mb-3">BEM Fakultas Sains & Teknologi UNRIYO</p>
+                            <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
+                                <li>Terlibat aktif dalam perencanaan program kerja lintas departemen untuk memfasilitasi potensi mahasiswa.</li>
+                                <li>Mengelola logistik operasional kegiatan & mitigasi kendala teknis di lapangan.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Action Box -->
+                    <div class="mt-8 p-6 rounded-2xl bg-gradient-to-r from-dark-surface to-dark-card border border-dark-border flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <div>
+                            <h4 class="text-base font-bold text-white">Butuh Dokumen CV Lengkap?</h4>
+                            <p class="text-xs text-gray-400">Unduh dokumen Curriculum Vitae versi resmi.</p>
+                        </div>
+                        <button onclick="openResumeModal()" class="whitespace-nowrap px-5 py-2.5 rounded-xl bg-dark-accent hover:bg-dark-accentHover text-white text-xs font-semibold shadow-glow-purple transition-all">
+                            <i class="fa-solid fa-download me-2"></i> Buka CV Lengkap
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS GRID SECTION -->
+    <section id="projects" class="py-20 bg-dark-surface/30 border-t border-dark-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-dark-accent">Portofolio Kunci</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">Proyek & Hasil Karya</p>
+                <div class="w-16 h-1 bg-dark-accent mx-auto rounded-full"></div>
+            </div>
+
+            <!-- Project Filter Tabs -->
+            <div class="flex flex-wrap items-center justify-center gap-2 mb-12">
+                <button onclick="filterProjects('all')" class="project-tab-btn active px-4 py-2 rounded-xl text-xs font-semibold bg-dark-accent text-white transition-all">Semua Proyek</button>
+                <button onclick="filterProjects('web')" class="project-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-dark-surface hover:bg-dark-card text-gray-300 border border-dark-border transition-all">Web Engineering</button>
+                <button onclick="filterProjects('data')" class="project-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-dark-surface hover:bg-dark-card text-gray-300 border border-dark-border transition-all">Data & NLP</button>
+                <button onclick="filterProjects('uiux')" class="project-tab-btn px-4 py-2 rounded-xl text-xs font-semibold bg-dark-surface hover:bg-dark-card text-gray-300 border border-dark-border transition-all">UI/UX Design</button>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Card 1 -->
+                <div class="project-card web p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-dark-accent/60 transition-all duration-300 flex flex-col justify-between group shadow-card-shadow">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-purple-500/10 text-purple-300 border border-purple-500/20">Web System</span>
+                            <span class="text-xs text-gray-500 font-semibold">2025</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-dark-glow transition-colors">
+                            Sistem Informasi Penilaian Magang
+                        </h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Aplikasi web rekapitulasi nilai dan evaluasi kinerja instansi Kemantren Tegalrejo dengan fitur kalkulasi Likert rating otomatis dan manajemen database relasional.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-dark-border/60">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">PHP</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">JavaScript</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">SQL</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-xs font-bold text-dark-glow hover:underline">
+                            Detail Sistem <i class="fa-solid fa-chevron-right ms-1 text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="project-card data p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-dark-accent/60 transition-all duration-300 flex flex-col justify-between group shadow-card-shadow">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-blue-500/10 text-blue-300 border border-blue-500/20">Data Science & NLP</span>
+                            <span class="text-xs text-gray-500 font-semibold">2024</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-dark-glow transition-colors">
+                            Twitter/X Data Crawling & NLP Pipeline
+                        </h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Sistem ekstraksi 10,000+ tweet otomatis dan pemrosesan teks tidak terstruktur menggunakan NLTK (Case Folding, Tokenizing, Stemming) dengan tingkat akurasi 90%+.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-dark-border/60">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">Python</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">NLTK</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">Data Mining</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-xs font-bold text-dark-glow hover:underline">
+                            Detail Dataset <i class="fa-solid fa-chevron-right ms-1 text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="project-card uiux p-6 rounded-2xl bg-dark-card border border-dark-border hover:border-dark-accent/60 transition-all duration-300 flex flex-col justify-between group shadow-card-shadow">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-bold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Juara 1 UI/UX</span>
+                            <span class="text-xs text-gray-500 font-semibold">2024</span>
+                        </div>
+                        <h3 class="text-lg font-bold text-white group-hover:text-dark-glow transition-colors">
+                            Purwarupa Web Interactive (UCD Method)
+                        </h3>
+                        <p class="text-xs text-gray-400 leading-relaxed">
+                            Desain antarmuka pemenang Juara 1 Kompetisi Website HIMASI berfokus pada User-Centered Design, hig-fidelity wireframe, dan kemudahan aksesibilitas pengguna.
+                        </p>
+                    </div>
+                    <div class="pt-6 mt-6 border-t border-dark-border/60">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">Figma</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">UCD</span>
+                            <span class="px-2 py-0.5 rounded text-[10px] bg-dark-surface text-gray-300">Wireframing</span>
+                        </div>
+                        <a href="#contact" class="inline-flex items-center text-xs font-bold text-dark-glow hover:underline">
+                            Detail Prototype <i class="fa-solid fa-chevron-right ms-1 text-[10px]"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION (BADGES) -->
+    <section id="skills" class="py-20 border-t border-dark-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-dark-accent">Keahlian Teknis</h2>
+                <p class="text-3xl font-extrabold text-white sm:text-4xl">Teknologi & Kompetensi</p>
+                <div class="w-16 h-1 bg-dark-accent mx-auto rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Category 1 -->
+                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border space-y-4">
+                    <div class="flex items-center space-x-3 text-dark-glow">
+                        <i class="fa-solid fa-code text-xl"></i>
+                        <h3 class="text-base font-bold text-white">Bahasa Pemrograman</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">PHP</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">JavaScript</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">React</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Python</span>
+                    </div>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border space-y-4">
+                    <div class="flex items-center space-x-3 text-blue-400">
+                        <i class="fa-solid fa-database text-xl"></i>
+                        <h3 class="text-base font-bold text-white">Analisis & Data</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">SQL</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">SPSS</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Microsoft Excel</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Database Management</span>
+                    </div>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border space-y-4">
+                    <div class="flex items-center space-x-3 text-emerald-400">
+                        <i class="fa-solid fa-pen-ruler text-xl"></i>
+                        <h3 class="text-base font-bold text-white">Desain & Tools</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Figma</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Canva</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Corel Draw</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">MS Office</span>
+                    </div>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="p-6 rounded-2xl bg-dark-card border border-dark-border space-y-4">
+                    <div class="flex items-center space-x-3 text-purple-400">
+                        <i class="fa-solid fa-brain text-xl"></i>
+                        <h3 class="text-base font-bold text-white">Soft Skills</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Problem Solving</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Leadership</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Adaptabilitas</span>
+                        <span class="px-3 py-1.5 rounded-lg bg-dark-surface border border-dark-border text-xs font-semibold text-gray-200">Komunikasi</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="py-20 bg-dark-surface/50 border-t border-dark-border/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                
+                <!-- Info Left -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="space-y-3">
+                        <h2 class="text-xs font-bold uppercase tracking-widest text-dark-accent">Hubungi Saya</h2>
+                        <h3 class="text-3xl font-extrabold text-white">Mari Berkolaborasi</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Tertarik untuk merekrut saya sebagai <span class="text-white">Software Engineer</span> atau <span class="text-white">Data Analyst</span>? Silakan kirim pesan atau hubungi kontak resmi di bawah ini.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4 pt-4">
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-dark-card border border-dark-border">
+                            <div class="w-10 h-10 rounded-lg bg-dark-accent/20 flex items-center justify-center text-dark-glow">
+                                <i class="fa-regular fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase font-bold">Email</p>
+                                <a href="mailto:aryananda542@gmail.com" class="text-sm font-semibold text-white hover:text-dark-glow">aryananda542@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-dark-card border border-dark-border">
+                            <div class="w-10 h-10 rounded-lg bg-dark-accent/20 flex items-center justify-center text-dark-glow">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase font-bold">Telepon / WhatsApp</p>
+                                <a href="https://wa.me/6285267787264" target="_blank" class="text-sm font-semibold text-white hover:text-dark-glow">+62 852-6778-7264</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4 p-4 rounded-xl bg-dark-card border border-dark-border">
+                            <div class="w-10 h-10 rounded-lg bg-dark-accent/20 flex items-center justify-center text-dark-glow">
+                                <i class="fa-brands fa-linkedin-in"></i>
+                            </div>
+                            <div>
+                                <p class="text-[10px] text-gray-400 uppercase font-bold">LinkedIn</p>
+                                <a href="https://www.linkedin.com/in/fernanda-arya-putra" target="_blank" class="text-sm font-semibold text-white hover:text-dark-glow">linkedin.com/in/fernanda-arya-putra</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Right (Integrated with FormSubmit) -->
+                <div class="lg:col-span-7">
+                    <form action="https://formsubmit.co/aryananda542@gmail.com" method="POST" class="p-8 rounded-2xl bg-dark-card border border-dark-border space-y-5 shadow-2xl">
+                        
+                        <!-- Configuration FormSubmit -->
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_template" value="table">
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Nama Lengkap</label>
+                                <input type="text" name="Nama" required placeholder="John Doe" class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-dark-border text-white text-sm focus:outline-none focus:border-dark-accent transition">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Alamat Email</label>
+                                <input type="email" name="Email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-dark-border text-white text-sm focus:outline-none focus:border-dark-accent transition">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Subjek Pesan</label>
+                            <input type="text" name="_subject" required placeholder="Peluang Kerja / Proyek" class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-dark-border text-white text-sm focus:outline-none focus:border-dark-accent transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-gray-300 uppercase mb-2">Pesan Anda</label>
+                            <textarea name="Pesan" rows="4" required placeholder="Tuliskan detail pesan Anda di sini..." class="w-full px-4 py-3 rounded-xl bg-dark-surface border border-dark-border text-white text-sm focus:outline-none focus:border-dark-accent transition"></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-dark-accent hover:bg-dark-accentHover text-white font-bold text-sm shadow-glow-purple transition-all">
+                            Kirim Pesan Sekarang <i class="fa-solid fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 bg-dark-bg border-t border-dark-border/60 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>© 2026 Fernanda Arya Putra, S.Kom. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- RESUME MODAL VIEWER -->
+    <div id="resume-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+        <div class="bg-dark-card border border-dark-border rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 relative space-y-6">
+            
+            <button onclick="closeResumeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="border-b border-dark-border pb-4">
+                <h3 class="text-2xl font-bold text-white">Curriculum Vitae Preview</h3>
+                <p class="text-xs text-dark-glow">Fernanda Arya Putra, S.Kom.</p>
+            </div>
+
+            <!-- Modal Content CV -->
+            <div class="space-y-6 text-sm text-gray-300">
+                <div>
+                    <h4 class="font-bold text-white text-base mb-1">PROFIL PROFESIONAL</h4>
+                    <p class="text-xs leading-relaxed text-gray-400">
+                        Lulusan Sarjana Sistem Informasi dengan keahlian komprehensif dalam Rekayasa Perangkat Lunak dan Analisis Data. Memiliki kemampuan teknis dalam perancangan dan pengembangan aplikasi web (PHP, JS, React) serta manipulasi dataset (SQL, Python).
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-base mb-2">PENDIDIKAN FORMAL</h4>
+                    <p class="text-xs font-semibold text-white">Universitas Respati Yogyakarta (2022 - 2026)</p>
+                    <p class="text-xs text-gray-400">S1 Sistem Informasi | IPK: 3.61/4.00</p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white text-base mb-2">PENGALAMAN UTAMA</h4>
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <p class="font-bold text-white">System Analyst & Lead Web Developer - Kemantren Tegalrejo (2025)</p>
+                            <p class="text-gray-400">Digitalisasi alur evaluasi instansi pemerintah dengan skala Likert rating otomatis.</p>
+                        </div>
+                        <div>
+                            <p class="font-bold text-white">Data Mining & NLP Specialist (2024)</p>
+                            <p class="text-gray-400">Ekstraksi 10,000+ data tweet & pembersihan NLTK pipeline Python.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-dark-border flex justify-end space-x-3">
+                <button onclick="closeResumeModal()" class="px-4 py-2 rounded-xl bg-dark-surface text-gray-300 text-xs font-semibold">Tutup</button>
+                <a href="mailto:aryananda542@gmail.com?subject=Permintaan%20Dokumen%20CV" class="px-5 py-2 rounded-xl bg-dark-accent text-white text-xs font-semibold shadow-glow-purple">Minta File CV Lengkap</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Resume Modal Toggle
+        function openResumeModal() {
+            document.getElementById('resume-modal').classList.remove('hidden');
+        }
+        function closeResumeModal() {
+            document.getElementById('resume-modal').classList.add('hidden');
+        }
+
+        // Project Filter Tab Handler
+        function filterProjects(category) {
+            const cards = document.querySelectorAll('.project-card');
+            const btns = document.querySelectorAll('.project-tab-btn');
+
+            btns.forEach(btn => {
+                btn.classList.remove('bg-dark-accent', 'text-white');
+                btn.classList.add('bg-dark-surface', 'text-gray-300', 'border', 'border-dark-border');
+            });
+
+            event.currentTarget.classList.remove('bg-dark-surface', 'text-gray-300', 'border', 'border-dark-border');
+            event.currentTarget.classList.add('bg-dark-accent', 'text-white');
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
